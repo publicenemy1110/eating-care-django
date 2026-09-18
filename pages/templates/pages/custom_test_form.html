@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% if is_edit %}Редактировать тест{% else %}Создать тест{% endif %} | Тесты на РПП{% endblock %}
+{% block body_attrs %} class="page-tests page-custom-test"{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/custom_test_form.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main class="custom-test-page">
+    <div class="container custom-test-page__container">
+        <nav class="screening__nav">
+            <a href="{% url 'pages:tests' %}" class="screening__back">← К списку тестов</a>
+        </nav>
+
+        <header class="custom-test-page__header">
+            <h1 class="custom-test-page__title">
+                {% if is_edit %}Редактировать тест{% else %}Создать собственный тест{% endif %}
+            </h1>
+            <p class="custom-test-page__lead">
+                {% if is_edit %}
+                    Измените параметры опросника и вопросы. Можно добавлять новые вопросы или удалять существующие.
+                {% else %}
+                    Сформируйте опросник для пациентов. После публикации он появится в разделе «Собственные тесты».
+                {% endif %}
+            </p>
+        </header>
+
+        <form method="post" class="custom-test-form" novalidate>
+            {% csrf_token %}
+
+            <fieldset class="custom-test-form__section">
+                <legend class="custom-test-form__legend">Основные параметры</legend>
+                {% for field in form %}
+                <div class="custom-test-form__field{% if field.field.widget.input_type == 'checkbox' %} custom-test-form__field--checkbox{% endif %}{% if field.errors %} custom-test-form__field--error{% endif %}">
+                    {% if field.field.widget.input_type == 'checkbox' %}
+                        <label class="custom-test-form__checkbox-label" for="{{ field.id_for_label }}">
+                            {{ field }}
+                            <span>{{ field.label }}</span>
+                        </label>
+                    {% else %}
+                        <label class="custom-test-form__label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    {% endif %}
+                    {% if field.errors %}
+                        <span class="custom-test-form__error">{{ field.errors.0 }}</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </fieldset>
+
+            <fieldset class="custom-test-form__section">
+                <legend class="custom-test-form__legend">Вопросы</legend>
+                <p class="custom-test-form__hint">Добавляйте столько вопросов, сколько нужно для опросника.</p>
+                {{ formset.management_form }}
+                {% if formset.non_form_errors %}
+                    <p class="custom-test-form__error" role="alert">{{ formset.non_form_errors.0 }}</p>
+                {% endif %}
+                <ol class="custom-test-form__questions">
+                    {% for question_form in formset %}
+                    <li class="custom-test-form__question{% if question_form.errors %} custom-test-form__field--error{% endif %}">
+                        <div class="custom-test-form__question-head">
+                            <span class="custom-test-form__question-num">Вопрос {{ forloop.counter }}</span>
+                            {% if question_form.DELETE %}
+                                <label class="custom-test-form__delete-label">
+                                    {{ question_form.DELETE }}
+                                    <span>Удалить</span>
+                                </label>
+                            {% endif %}
+                        </div>
+                        {% for hidden in question_form.hidden_fields %}{{ hidden }}{% endfor %}
+                        {{ question_form.text }}
+                        {% if question_form.text.errors %}
+                            <span class="custom-test-form__error">{{ question_form.text.errors.0 }}</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ol>
+                <button type="button" class="custom-test-form__add-question" id="custom-test-add-question">
+                    + Добавить вопрос
+                </button>
+            </fieldset>
+
+            <template id="custom-question-empty-form">
+                {% with question_form=formset.empty_form %}
+                <li class="custom-test-form__question">
+                    <div class="custom-test-form__question-head">
+                        <span class="custom-test-form__question-num">Вопрос</span>
+                        {% if question_form.DELETE %}
+                            <label class="custom-test-form__delete-label">
+                                {{ question_form.DELETE }}
+                                <span>Удалить</span>
+                            </label>
+                        {% endif %}
+                    </div>
+                    {% for hidden in question_form.hidden_fields %}{{ hidden }}{% endfor %}
+                    {{ question_form.text }}
+                </li>
+                {% endwith %}
+            </template>
+
+            <div class="custom-test-form__actions">
+                <button type="submit" class="custom-test-form__submit">
+                    {% if is_edit %}Сохранить изменения{% else %}Сохранить тест{% endif %}
+                </button>
+            </div>
+        </form>
+
+        {% if is_edit and test %}
+        <form method="post" action="{% url 'pages:custom_test_delete' slug=test.slug %}" class="custom-test-form__delete-form" onsubmit="return confirm('Удалить этот тест без возможности восстановления?');">
+            {% csrf_token %}
+            <button type="submit" class="custom-test-form__delete">Удалить тест</button>
+        </form>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

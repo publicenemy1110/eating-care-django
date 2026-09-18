@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}О нас | Eating Care Platform{% endblock %}
+{% block body_attrs %} class="page-about"{% endblock %}
+
+{% block content %}
+<main class="about-page">
+        <section class="about-hero">
+            <div class="container about-hero__container">
+                <p class="about-hero__label">Eating Care Platform</p>
+                <h1 class="about-hero__title">Подробнее о нас</h1>
+                <p class="about-hero__lead">
+                    Мы собираем доступные и понятные материалы о расстройствах пищевого поведения —
+                    с заботой, научной опорой и вниманием к каждому человеку.
+                </p>
+            </div>
+        </section>
+
+        <section class="about-mission">
+            <div class="container about-mission__container">
+                <div class="about-mission__grid">
+                    <div class="about-mission__content">
+                        <h2 class="about-section__title">Наша миссия</h2>
+                        <p class="about-mission__text">
+                            Наша цель — помочь людям лучше понимать расстройства пищевого поведения:
+                            пройти тесты, изучить материалы, найти поддержку для себя и близких
+                            и ориентироваться в вопросах питания.
+                        </p>
+                        <p class="about-mission__text">
+                            Свобода от РПП начинается с понимания себя и доступа к проверенной
+                            информации. На платформе — тесты, теория о РПП, материалы для родителей
+                            и программы питания, чтобы вы могли двигаться вперёд в своём темпе.
+                        </p>
+                    </div>
+                    <div class="about-mission__image">
+                        <img src="{% static 'images/hero-photo.png' %}" alt="Eating Care Platform">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-values">
+            <div class="container about-values__container">
+                <h2 class="about-section__title about-section__title--center">Чем мы отличаемся</h2>
+                <div class="about-values__grid">
+                    <article class="about-values__card">
+                        <span class="about-values__number" aria-hidden="true">01</span>
+                        <h3 class="about-values__heading">Проверенная информация</h3>
+                        <p class="about-values__text">
+                            Опираемся на научно подтверждённые данные о расстройствах
+                            пищевого поведения — без домыслов и непроверенных советов.
+                        </p>
+                    </article>
+                    <article class="about-values__card">
+                        <span class="about-values__number" aria-hidden="true">02</span>
+                        <h3 class="about-values__heading">Всё в одном месте</h3>
+                        <p class="about-values__text">
+                            Тесты, теория о РПП, блок для родителей и планы питания —
+                            не нужно искать материалы по разным сайтам.
+                        </p>
+                    </article>
+                    <article class="about-values__card">
+                        <span class="about-values__number" aria-hidden="true">03</span>
+                        <h3 class="about-values__heading">Поддержка близких</h3>
+                        <p class="about-values__text">
+                            Материалы для родителей и семьи, чтобы быть рядом
+                            осознанно и бережно на всех этапах.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-approach">
+            <div class="container about-approach__container">
+                <div class="about-approach__inner">
+                    <h2 class="about-section__title">Наш подход</h2>
+                    <ul class="about-approach__list">
+                        <li class="about-approach__item">
+                            <strong>Диагностика</strong> — тесты помогают понять особенности
+                            состояния и осмыслить результаты в удобном формате.
+                        </li>
+                        <li class="about-approach__item">
+                            <strong>Теория</strong> — материалы о РПП: виды расстройств,
+                            симптомы и ответы на частые вопросы.
+                        </li>
+                        <li class="about-approach__item">
+                            <strong>Семья и питание</strong> — указание для родителей и программы
+                            питания, чтобы вы могли действовать осознанно и бережно.
+                        </li>
+                    </ul>
+                    <blockquote class="about-approach__quote">
+                        Проверенная информация и практические инструменты — всё, что нужно
+                        для осознанного пути к лучшему самочувствию.
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-cta">
+            <div class="container about-cta__container">
+                <h2 class="about-cta__title">Готовы сделать первый шаг?</h2>
+                <p class="about-cta__text">
+                    Пройдите тест или ознакомьтесь с материалами для родителей —
+                    мы рядом, когда вы будете готовы.
+                </p>
+                <div class="about-cta__actions">
+                    <a href="{% url 'pages:tests' %}" class="about-cta__btn about-cta__btn--primary">Пройти тест</a>
+                    <a href="{% url 'pages:parents' %}" class="about-cta__btn about-cta__btn--secondary">Для родителей</a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

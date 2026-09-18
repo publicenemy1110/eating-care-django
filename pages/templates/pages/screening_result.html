@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Результат: {{ result.title }} | Тесты на РПП{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/screening.css' %}?v=20250524">
+{% endblock %}
+{% block body_attrs %} class="page-tests page-screening"{% endblock %}
+
+{% block content %}
+<main class="screening screening--result">
+    <div class="container screening__container">
+        <nav class="screening__nav">
+            <a href="{% url 'pages:tests' %}" class="screening__back">← К списку тестов</a>
+        </nav>
+
+        <header class="screening__header">
+            <h1 class="screening__title">Результат: {{ result.title }}</h1>
+        </header>
+
+        <div class="screening-result">
+            <p class="screening-result__score">
+                Суммарный балл: <strong>{{ result.score }}</strong>
+                {% if result.max_score %} из {{ result.max_score }}{% endif %}
+            </p>
+            <p class="screening-result__summary">{{ result.summary }}</p>
+        </div>
+
+        <p class="screening__disclaimer screening__disclaimer--emphasis">{{ disclaimer }}</p>
+
+        <div class="screening-result__actions">
+            <a href="{{ retake_url }}" class="screening-form__submit screening-form__submit--secondary">Пройти снова</a>
+            <a href="{{ tests_url }}" class="screening__back screening__back--btn">К списку тестов</a>
+        </div>
+    </div>
+</main>
+{% endblock %}

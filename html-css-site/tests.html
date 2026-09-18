@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты на РПП | РПП терапия</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body class="page-tests">
+
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="logo">
+                    <a href="index.html" class="logo__link">
+                        <img src="images/logo.png" alt="Логотип" class="logo__img">
+                    </a>
+                </div>
+
+                                <nav class="nav">
+                    <ul class="nav__list">
+                        <li><a href="rpp.html" class="nav__link">Про РПП</a></li>
+                        <li><a href="tests.html" class="nav__link active">Тесты на РПП</a></li>
+                        <li><a href="parents.html" class="nav__link">Для родителей</a></li>
+                        <li><a href="programs.html" class="nav__link">Программы питания</a></li>
+                        <li><a href="aboutus.html" class="nav__link">О нас</a></li>
+                    </ul>
+                </nav>
+<button class="burger" aria-label="Меню">
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu">
+            <div class="mobile-menu__inner">
+                                <ul class="mobile-menu__list">
+                    <li><a href="rpp.html" class="mobile-menu__link">Про РПП</a></li>
+                    <li><a href="tests.html" class="mobile-menu__link active">Тесты на РПП</a></li>
+                    <li><a href="parents.html" class="mobile-menu__link">Для родителей</a></li>
+                    <li><a href="programs.html" class="mobile-menu__link">Программы питания</a></li>
+                    <li><a href="aboutus.html" class="mobile-menu__link">О нас</a></li>
+                </ul>
+</div>
+        </div>
+    </header>
+
+    <main class="tests">
+        <div class="container tests__container">
+            <h1 class="visually-hidden">Тесты на РПП</h1>
+
+            <div class="tests-toolbar">
+                <div class="tests-toolbar__info">
+                    <span class="tests-toolbar__caption">Категория</span>
+                    <p class="tests-toolbar__label" id="tests-category-label">По цели диагностики</p>
+                </div>
+                <div class="tests-filter">
+                    <button type="button" title="Фильтр по категории" class="filter" id="tests-filter-btn" aria-expanded="false" aria-haspopup="listbox" aria-controls="tests-filter-menu">
+                        <svg viewBox="0 0 512 512" height="1em" aria-hidden="true">
+                            <path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"></path>
+                        </svg>
+                    </button>
+                    <div class="tests-filter__menu" id="tests-filter-menu" role="listbox" aria-label="Категории тестов" hidden>
+                        <button type="button" class="tests-filter__option is-active" role="option" aria-selected="true" data-tab="diagnostic" data-label="По цели диагностики">По цели диагностики</button>
+                        <button type="button" class="tests-filter__option" role="option" aria-selected="false" data-tab="model" data-label="По теоретической модели">По теоретической модели</button>
+                        <button type="button" class="tests-filter__option" role="option" aria-selected="false" data-tab="disorder" data-label="По типу расстройства">По типу расстройства</button>
+                        <button type="button" class="tests-filter__option" role="option" aria-selected="false" data-tab="extra" data-label="Дополнительные тесты">Дополнительные тесты</button>
+                        <button type="button" class="tests-filter__option" role="option" aria-selected="false" data-tab="custom" data-label="Собственные тесты">Собственные тесты</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- По цели диагностики -->
+            <div class="tests-panel is-active" id="panel-diagnostic" role="tabpanel" aria-labelledby="tab-diagnostic" data-panel="diagnostic">
+                <ul class="tests-list">
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">EAT-26 (Eating Attitudes Test, 26 пунктов)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">SCOFF Questionnaire</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">EDE-Q (Eating Disorder Examination Questionnaire)</span>
+                        <a href="#" class="tests-list__btn tests-list__btn--focus">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">BITE (Bulimic Investigatory Test, Edinburgh)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">BES (Binge Eating Scale)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">CIA (Clinical Impairment Assessment)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- По теоретической модели -->
+            <div class="tests-panel" id="panel-model" role="tabpanel" aria-labelledby="tab-model" data-panel="model" hidden>
+                <ul class="tests-list">
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">EDI-3 (Eating Disorder Inventory-3)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">BSQ (Body Shape Questionnaire)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">TFEQ-R21 (Three-Factor Eating Questionnaire)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">BAT (Body Attitudes Test)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">DASS-21 (шкалы стресса, тревоги и депрессии)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- По типу расстройства -->
+            <div class="tests-panel" id="panel-disorder" role="tabpanel" aria-labelledby="tab-disorder" data-panel="disorder" hidden>
+                <ul class="tests-list">
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">Анорексия — EAT-26</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">Булимия — BITE</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">Компульсивное переедание — BES</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">ОРЭ (расстройство переедания) — EDE-Q</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">Расстройство пищевого поведения — SCOFF</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Дополнительные -->
+            <div class="tests-panel" id="panel-extra" role="tabpanel" aria-labelledby="tab-extra" data-panel="extra" hidden>
+                <ul class="tests-list">
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">PHQ-9 (симптомы депрессии)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">GAD-7 (уровень тревожности)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">RSES (шкала самооценки Розенберга)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">PSQI (качество сна)</span>
+                        <a href="#" class="tests-list__btn">Открыть</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Собственные тесты -->
+            <div class="tests-panel" id="panel-custom" role="tabpanel" aria-labelledby="tab-custom" data-panel="custom" hidden>
+                <div class="tests-empty">
+                    <p class="tests-empty__text">
+                        Здесь появятся ваши собственные опросники и методики.
+                    </p>
+                    <button type="button" class="tests-empty__btn" disabled>Создать тест (скоро)</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <a href="index.html" class="footer__logo-link">
+                    <img src="images/logo.png" alt="Eating Care Platform" class="footer__logo">
+                </a>
+                <span class="footer__name">Eating Care Platform</span>
+            </div>
+            <div class="footer__right">
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" aria-label="Telegram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="ВКонтакте">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.12-5.339-3.202-2.17-3.04-2.764-5.32-2.764-5.78 0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer__copy">©eatingcaretplatform 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/tests.js"></script>
+</body>
+</html>

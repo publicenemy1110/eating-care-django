@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if is_own_profile %}Мой профиль{% else %}{{ profile_user.get_full_name|default:profile_user.username }}{% endif %} | Eating Care Platform
+{% endblock %}
+{% block body_attrs %} class="page-profile"{% endblock %}
+
+{% block content %}
+<main class="profile-page">
+    <section class="profile-hero">
+        <div class="container profile-hero__container">
+            <div class="profile-hero__avatar" aria-hidden="true">
+                {{ profile_user.first_name|default:profile_user.username|slice:":1"|upper }}{{ profile_user.last_name|slice:":1"|upper }}
+            </div>
+            <p class="profile-hero__label">Eating Care Platform</p>
+            <h1 class="profile-hero__title">
+                {{ profile_user.get_full_name|default:profile_user.username }}
+            </h1>
+            <span class="profile-hero__badge">{{ role_label }}</span>
+            {% if role_profile and role_profile.specialization %}
+                <p class="profile-hero__lead">{{ role_profile.specialization }}</p>
+            {% elif profile_user.is_psychologist %}
+                <p class="profile-hero__lead">Специалист по работе с расстройствами пищевого поведения</p>
+            {% endif %}
+        </div>
+    </section>
+
+    {% if messages %}
+    <div class="container profile-messages">
+        {% for message in messages %}
+            <p class="profile-messages__item profile-messages__item--{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if is_own_profile and profile_user.is_psychologist and role_profile %}
+        {% if role_profile.moderation_status == 'pending' %}
+        <div class="container profile-moderation">
+            <div class="profile-moderation__banner profile-moderation__banner--pending">
+                <strong>Профиль на модерации.</strong>
+                Заполните специализацию и номер лицензии, затем дождитесь проверки администратором.
+                До одобрения ваш профиль не будет виден пациентам.
+            </div>
+        </div>
+        {% elif role_profile.moderation_status == 'rejected' %}
+        <div class="container profile-moderation">
+            <div class="profile-moderation__banner profile-moderation__banner--rejected">
+                <strong>Заявка отклонена.</strong>
+                {% if role_profile.moderation_note %}
+                    {{ role_profile.moderation_note }}
+                {% else %}
+                    Обновите профессиональный профиль и сохраните изменения, чтобы отправить заявку повторно.
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    {% endif %}
+
+    <section class="profile-info">
+        <div class="container profile-info__container">
+            <div class="profile-info__grid">
+                <article class="profile-card">
+                    <h2 class="profile-section__title">{% if is_own_profile %}Контактные данные{% else %}Контакты{% endif %}</h2>
+                    <dl class="profile-details">
+                        {% if profile_user.email or is_own_profile %}
+                        <div class="profile-details__row">
+                            <dt>Email</dt>
+                            <dd>{{ profile_user.email|default:"—" }}</dd>
+                        </div>
+                        {% endif %}
+                        {% if profile_user.phone or is_own_profile %}
+                        <div class="profile-details__row">
+                            <dt>Телефон</dt>
+                            <dd>{{ profile_user.phone|default:"—" }}</dd>
+                        </div>
+                        {% endif %}
+                        {% if is_own_profile %}
+                        <div class="profile-details__row">
+                            <dt>Логин</dt>
+                            <dd>{{ profile_user.username }}</dd>
+                        </div>
+                        {% endif %}
+                    </dl>
+                </article>
+
+                {% if role_profile %}
+                    {% if profile_user.is_psychologist %}
+                    <article class="profile-card">
+                        <h2 class="profile-section__title">Профессиональная информация</h2>
+                        <dl class="profile-details">
+                            <div class="profile-details__row">
+                                <dt>Специализация</dt>
+                                <dd>{{ role_profile.specialization|default:"—" }}</dd>
+                            </div>
+                            <div class="profile-details__row">
+                                <dt>Лицензия</dt>
+                                <dd>{{ role_profile.license_number|default:"—" }}</dd>
+                            </div>
+                            {% if is_own_profile %}
+                            <div class="profile-details__row">
+                                <dt>Статус модерации</dt>
+                                <dd>
+                                    {% if role_profile.moderation_status == 'approved' %}
+                                        <span class="profile-status profile-status--active">Одобрен</span>
+                                    {% elif role_profile.moderation_status == 'pending' %}
+                                        <span class="profile-status profile-status--pending">На модерации</span>
+                                    {% else %}
+                                        <span class="profile-status profile-status--inactive">Отклонён</span>
+                                    {% endif %}
+                                </dd>
+                            </div>
+                            {% endif %}
+                            <div class="profile-details__row">
+                                <dt>Приём пациентов</dt>
+                                <dd>
+                                    {% if role_profile.is_accepting_patients %}
+                                        <span class="profile-status profile-status--active">Открыт</span>
+                                    {% else %}
+                                        <span class="profile-status profile-status--inactive">Закрыт</span>
+                                    {% endif %}
+                                </dd>
+                            </div>
+                        </dl>
+                    </article>
+                    {% elif profile_user.is_patient %}
+                    <article class="profile-card">
+                        <h2 class="profile-section__title">Медицинская информация</h2>
+                        <dl class="profile-details">
+                            <div class="profile-details__row">
+                                <dt>Дата рождения</dt>
+                                <dd>{{ role_profile.date_of_birth|date:"d.m.Y"|default:"—" }}</dd>
+                            </div>
+                            <div class="profile-details__row">
+                                <dt>Психолог</dt>
+                                <dd>
+                                    {% if role_profile.psychologist %}
+                                        {{ role_profile.psychologist.get_full_name|default:role_profile.psychologist.username }}
+                                    {% else %}
+                                        —
+                                    {% endif %}
+                                </dd>
+                            </div>
+                            <div class="profile-details__row">
+                                <dt>Экстренный контакт</dt>
+                                <dd>{{ role_profile.emergency_contact|default:"—" }}</dd>
+                            </div>
+                        </dl>
+                    </article>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            {% if profile_user.is_psychologist and role_profile.bio %}
+            <article class="profile-card profile-card--wide">
+                <h2 class="profile-section__title">О специалисте</h2>
+                <p class="profile-bio">{{ role_profile.bio|linebreaksbr }}</p>
+            </article>
+            {% endif %}
+        </div>
+    </section>
+
+    {% if is_own_profile %}
+    <section class="profile-edit">
+        <div class="container profile-edit__container">
+            <h2 class="profile-section__title profile-section__title--center">Редактировать профиль</h2>
+            <form method="post" class="profile-form">
+                {% csrf_token %}
+                <fieldset class="profile-form__section">
+                    <legend class="profile-form__legend">Личные данные</legend>
+                    <div class="profile-form__grid">
+                        {% for field in user_form %}
+                        <div class="profile-form__field{% if field.errors %} profile-form__field--error{% endif %}">
+                            <label class="profile-form__label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <span class="profile-form__error">{{ field.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+
+                {% if role_form %}
+                <fieldset class="profile-form__section">
+                    <legend class="profile-form__legend">
+                        {% if profile_user.is_psychologist %}Профессиональный профиль{% else %}Дополнительная информация{% endif %}
+                    </legend>
+                    <div class="profile-form__grid">
+                        {% for field in role_form %}
+                        <div class="profile-form__field{% if field.field.widget.input_type == 'checkbox' %} profile-form__field--checkbox{% endif %}{% if field.errors %} profile-form__field--error{% endif %}">
+                            {% if field.field.widget.input_type == 'checkbox' %}
+                                <label class="profile-form__checkbox-label" for="{{ field.id_for_label }}">
+                                    {{ field }}
+                                    <span>{{ field.label }}</span>
+                                </label>
+                            {% else %}
+                                <label class="profile-form__label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                            {% endif %}
+                            {% if field.errors %}
+                                <span class="profile-form__error">{{ field.errors.0 }}</span>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </fieldset>
+                {% endif %}
+
+                <div class="profile-form__actions">
+                    <button type="submit" class="profile-form__submit">Сохранить изменения</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    {% elif not request.user.is_authenticated %}
+    <section class="profile-cta">
+        <div class="container profile-cta__container">
+            <p class="profile-cta__text">Хотите записаться или связаться со специалистом?</p>
+            <a href="{% url 'accounts:login' %}" class="profile-cta__btn">Войти в аккаунт</a>
+        </div>
+    </section>
+    {% endif %}
+</main>
+{% endblock %}

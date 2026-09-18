@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Eating Care Platform | Свобода от РПП{% endblock %}
+
+{% block content %}
+<section class="hero">
+        <div class="container hero__container">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    Научные тесты, сбалансированные планы<br>
+                    и понятные рекомендации для всей семьи.
+                </h1>
+                <p class="hero__subtitle">
+                    Подробная информация о расстройстве пищевого поведения — в одном месте.
+                </p>
+                <a href="{% url 'pages:tests' %}" class="hero__btn">Пройти тест</a>
+            </div>
+            <div class="hero__image">
+                <img src="{% static 'images/hero-photo.png' %}" alt="Информация и поддержка при РПП">
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container_about">
+            <h3 class="about_title">
+                Наша цель — помочь людям лучше понимать расстройства пищевого поведения: пройти тесты, изучить материалы, найти поддержку для себя и близких и ориентироваться в вопросах питания.
+            </h3>
+            <a href="{% url 'pages:about' %}" class="about_btn">
+                Подробнее о нас
+            </a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container services__container">
+            <h2 class="services__title">Чем мы можем помочь</h2>
+            <p class="services__lead">Выберите раздел — тесты, программы питания и материалы о РПП в одном месте.</p>
+            <div class="services__grid">
+                <article class="services__card">
+                    <span class="services__card-num">01</span>
+                    <h3 class="services__card-title">Тесты на РПП</h3>
+                    <p class="services__card-text">Пройдите скрининговые опросники, чтобы лучше понять своё состояние и осмыслить результаты.</p>
+                    <a href="{% url 'pages:tests' %}" class="services__card-link">Перейти к тестам</a>
+                </article>
+                <article class="services__card">
+                    <span class="services__card-num">02</span>
+                    <h3 class="services__card-title">Программы питания</h3>
+                    <p class="services__card-text">Сбалансированные планы питания, разработанные с учётом этапа восстановления.</p>
+                    <a href="{% url 'pages:programs' %}" class="services__card-link">Перейти к программам</a>
+                </article>
+                <article class="services__card">
+                    <span class="services__card-num">03</span>
+                    <h3 class="services__card-title">Все о РПП</h3>
+                    <p class="services__card-text">Подробная информация о расстройстве пищевого поведения, его виды и симптомы.</p>
+                    <a href="{% url 'pages:rpp' %}" class="services__card-link">Перейти к информации</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="why" id="why">
+        <div class="container why__container">
+            <div class="why__grid">
+                <div class="why__left">
+                    <h2 class="why__title">Почему Eating Care Platform?</h2>
+                    <ul class="why__list">
+                        <li class="why__item">
+                            <button class="why__trigger" type="button" aria-expanded="false">
+                                <span class="why__trigger-text">Тесты на РПП</span>
+                                <span class="why__icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="why__panel" hidden>
+                                <p>Скрининговые опросники помогают оценить признаки расстройства пищевого поведения и осмыслить результаты самостоятельно.</p>
+                            </div>
+                        </li>
+                        <li class="why__item">
+                            <button class="why__trigger" type="button" aria-expanded="false">
+                                <span class="why__trigger-text">Программы питания</span>
+                                <span class="why__icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="why__panel" hidden>
+                                <p>Готовые планы питания с учётом этапа восстановления — практический инструмент для выстраивания регулярного питания.</p>
+                            </div>
+                        </li>
+                        <li class="why__item">
+                            <button class="why__trigger" type="button" aria-expanded="false">
+                                <span class="why__trigger-text">Информация о РПП</span>
+                                <span class="why__icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="why__panel" hidden>
+                                <p>Материалы о видах расстройств, симптомах и подходах к пониманию РПП — собраны в одном разделе платформы.</p>
+                            </div>
+                        </li>
+                        <li class="why__item">
+                            <button class="why__trigger" type="button" aria-expanded="false">
+                                <span class="why__trigger-text">Рекомендации для родителей</span>
+                                <span class="why__icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="why__panel" hidden>
+                                <p>Методическое указание: как поддержать близкого человека и выстроить здоровые отношения с едой в семье.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="why__aside">
+                    <p class="why__text">
+                        Достоверная информация, тестирование и программы питания — всё необходимое для осознанного знакомства с темой РПП.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section><section class="home-cta">
+        <div class="container home-cta__container">
+            <h2 class="home-cta__title">Готовы сделать первый шаг?</h2>
+            <p class="home-cta__text">Пройдите тест, чтобы лучше понять своё состояние, или изучите материалы о РПП и программы питания.</p>
+            <a href="{% url 'pages:tests' %}" class="home-cta__btn home-cta__btn--primary">Пройти тест</a>
+        </div>
+    </section>
+{% endblock %}

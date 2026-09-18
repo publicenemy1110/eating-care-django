@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Eating Care Platform | Свобода от РПП{% endblock %}
+
+{% block content %}
+<section class="hero">
+        <div class="container hero__container">
+            <div class="hero__content">
+                <h1 class="hero__title">
+                    Научные тесты, сбалансированные планы<br>
+                    и понятные рекомендации для всей семьи.
+                </h1>
+                <p class="hero__subtitle">
+                    Подробная информация о расстройстве пищевого поведения — в одном месте.
+                </p>
+                <a href="{% url 'pages:tests' %}" class="hero__btn">Пройти тест</a>
+            </div>
+            <div class="hero__image">
+                <img src="{% static 'images/hero-photo.png' %}" alt="Информация и поддержка при РПП">
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container_about">
+            <h3 class="about_title">
+                Наша цель: помочь людям с лечением РПП эффективно и безопасно,  показать и рассказать о различных методиках лечения. Наладить поведение и питание.
+            </h3>
+            <a href="{% url 'pages:about' %}" class="about_btn">Подробнее о нас</a>
+        </div>
+    </section>
+
+    <section class="why" id="why">
+        <div class="container why__container">
+            <div class="why__grid">
+                <div class="why__left">
+                    <h2 class="why__title">Почему Eating Care Platform?</h2>
+                    <ul class="why__list">
+                        <li class="why__item">
+                            <button class="why__trigger" type="button" aria-expanded="false">
+                                <span class="why__trigger-text">Основано на доказательных методах</span>
+                                <span class="why__icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="why__panel" hidden>
+                                <p>Мы опираемся на научно подтверждённые данные и общепринятые подходы к пониманию расстройств пищевого поведения.</p>
+                            </div>
+                        </li>
+                        <li class="why__item">
+                            <button class="why__trigger" type="button" aria-expanded="false">
+                                <span class="why__trigger-text">Всё в одном месте</span>
+                                <span class="why__icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="why__panel" hidden>
+                                <p>Тесты на РПП, теория о расстройствах, материалы для родителей и программы питания — не нужно искать информацию по разным сайтам.</p>
+                            </div>
+                        </li>
+                        <li class="why__item">
+                            <button class="why__trigger" type="button" aria-expanded="false">
+                                <span class="why__trigger-text">Поддержка близких и питание</span>
+                                <span class="why__icon" aria-hidden="true">+</span>
+                            </button>
+                            <div class="why__panel" hidden>
+                                <p>Методическое указание для родителей и готовые планы питания — чтобы быть рядом осознанно и бережно.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="why__aside">
+                    <p class="why__text">
+                        Достоверная информация и практические инструменты — всё, что нужно для осознанного пути к лучшему самочувствию.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

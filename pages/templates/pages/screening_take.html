@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ screening.title }} | Тесты на РПП{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/screening.css' %}?v=20250524">
+{% endblock %}
+{% block body_attrs %} class="page-tests page-screening"{% endblock %}
+
+{% block content %}
+<main class="screening">
+    <div class="container screening__container">
+        <nav class="screening__nav">
+            <a href="{% url 'pages:tests' %}" class="screening__back">← К списку тестов</a>
+        </nav>
+
+        <header class="screening__header">
+            <h1 class="screening__title">{{ screening.title }}</h1>
+            <p class="screening__lead">{{ screening.short_description }}</p>
+            {% if screening.instructions %}
+            <p class="screening__instructions">{{ screening.instructions }}</p>
+            {% endif %}
+        </header>
+
+        <p class="screening__disclaimer">{{ disclaimer }}</p>
+
+        {% if form_error %}
+        <p class="screening__error" role="alert">{{ form_error }}</p>
+        {% endif %}
+
+        <form class="screening-form" method="post" action="" novalidate>
+            {% csrf_token %}
+            <ol class="screening-form__list">
+                {% for question in screening.questions %}
+                <li class="screening-form__item">
+                    <p class="screening-form__question" id="q-{{ question.id }}">
+                        <span class="screening-form__num">{{ forloop.counter }}.</span>
+                        {{ question.text }}
+                    </p>
+                    {% if screening.answer_type == 'yes_no' %}
+                    <div class="screening-form__options screening-form__options--yn" role="radiogroup" aria-labelledby="q-{{ question.id }}">
+                        <label class="screening-form__pill">
+                            <input class="screening-form__input" type="radio" name="{{ question.id }}" value="1" required>
+                            <span class="screening-form__text">Да</span>
+                        </label>
+                        <label class="screening-form__pill">
+                            <input class="screening-form__input" type="radio" name="{{ question.id }}" value="0" required>
+                            <span class="screening-form__text">Нет</span>
+                        </label>
+                    </div>
+                    {% elif screening.answer_type == 'eat26_likert' %}
+                    <div class="screening-form__options screening-form__options--grid screening-form__options--eat26_likert" role="radiogroup" aria-labelledby="q-{{ question.id }}">
+                        {% for value, label in screening.answer_choices %}
+                        <label class="screening-form__choice screening-form__choice--compact">
+                            <input class="screening-form__input" type="radio" name="{{ question.id }}" value="{{ value }}" required>
+                            <span class="screening-form__text">{{ label }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="screening-form__options screening-form__options--stack screening-form__options--{{ screening.answer_type }}" role="radiogroup" aria-labelledby="q-{{ question.id }}">
+                        {% for value, label in screening.answer_choices %}
+                        <label class="screening-form__choice">
+                            <input class="screening-form__input" type="radio" name="{{ question.id }}" value="{{ value }}" required>
+                            <span class="screening-form__text">{{ label }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ol>
+            <div class="screening-form__actions">
+                <button type="submit" class="screening-form__submit">Показать результат</button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/screening-form.js' %}?v=20250524"></script>
+{% endblock %}

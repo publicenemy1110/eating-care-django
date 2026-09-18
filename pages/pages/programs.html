@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Программы питания | Eating Care Platform{% endblock %}
+{% block body_attrs %} class="page-programs"{% endblock %}
+
+{% block content %}
+<main class="programs">
+        <section class="programs-hero">
+            <div class="container programs-hero__container">
+                <p class="programs-hero__source">Eating Care Platform · терапия РПП</p>
+                <h1 class="programs-hero__title">Программы питания</h1>
+                <p class="programs-hero__text">
+                    Десять структурированных рационов для восстановления при расстройстве пищевого поведения.
+        </section>
+
+        <section class="programs-list">
+            <div class="container programs-list__container">
+                <div class="programs-grid">
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">01</span>
+        <span class="program-card__tag">Базовый рацион</span>
+    </div>
+    <h2 class="program-card__title">Регулярное питание 3+3</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 2000 ккал</strong></li>
+        <li>Восстановление режима</li>
+        <li>Умеренная активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Три основных приёма и три перекуса в одно время — основа терапии РПП. Без пропусков и «компенсаций».</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Овсянка с ягодами и орехами</li><li>Курица с рисом и овощами</li><li>Творог, фрукт, чай</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="regular-meals">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">02</span>
+        <span class="program-card__tag">После ограничений</span>
+    </div>
+    <h2 class="program-card__title">Мягкий старт после ограничений</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 1900 ккал</strong></li>
+        <li>Постепенное увеличение</li>
+        <li>Низкая активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Для тех, кто долго недоедал: плавное наращивание порций без резких скачков и страха «перебрать».</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Омлет с хлебом</li><li>Суп и макароны с индейкой</li><li>Творожная запеканка</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="gentle-start">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">03</span>
+        <span class="program-card__tag">Режим без диет</span>
+    </div>
+    <h2 class="program-card__title">Структурированный день</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 2100 ккал</strong></li>
+        <li>Стабилизация</li>
+        <li>Умеренная активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Чёткое расписание приёмов пищи вместо подсчёта калорий. Акцент на регулярности, а не на «правильных» продуктах.</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Мюсли с молоком</li><li>Плов с курицей</li><li>Омлет и овощи на ужин</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="structured-day">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">04</span>
+        <span class="program-card__tag">Компульсии</span>
+    </div>
+    <h2 class="program-card__title">Рацион при компульсивном переедании</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 2000 ккал</strong></li>
+        <li>Снижение позывов</li>
+        <li>Умеренная активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Регулярные сытные приёмы пищи помогают уменьшить голод и импульсивные переедания. Без пропусков «из-за вчерашнего».</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Гречка с яйцом</li><li>Суп и котлета с гарниром</li><li>Рыба с картофелем</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="binge-recovery">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">05</span>
+        <span class="program-card__tag">Ограничения</span>
+    </div>
+    <h2 class="program-card__title">Рацион при ограничительном РПП</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 2200 ккал</strong></li>
+        <li>Восстановление</li>
+        <li>Низкая активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Достаточная калорийность и разнообразие: углеводы, жиры и «запретные» продукты — часть нормального питания.</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Блины с творогом</li><li>Паста с соусом и мясом</li><li>Десерт после ужина</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="restrictive-recovery">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">06</span>
+        <span class="program-card__tag">Для семьи</span>
+    </div>
+    <h2 class="program-card__title">Семейные приёмы пищи</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 2000 ккал</strong></li>
+        <li>Поддержка близких</li>
+        <li>Умеренная активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Меню, которое можно готовить всей семье. Помогает родителям не выделять «особую» еду и снижать напряжение за столом.</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Каша и бутерброд</li><li>Суп и гуляш с гарниром</li><li>Ужин вместе: рыба и салат</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="family-meals">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">07</span>
+        <span class="program-card__tag">Бережный подход</span>
+    </div>
+    <h2 class="program-card__title">Питание с учётом триггеров</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 1950 ккал</strong></li>
+        <li>Снижение тревоги</li>
+        <li>Умеренная активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Знакомые, предсказуемые блюда. Постепенное расширение рациона — в темпе, согласованном с психологом.</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Рисовая каша</li><li>Куриный суп с лапшой</li><li>Творог и фрукты</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="triggers-aware">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">08</span>
+        <span class="program-card__tag">Восстановление</span>
+    </div>
+    <h2 class="program-card__title">Достаточная энергия для восстановления</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 2300 ккал</strong></li>
+        <li>Метаболическое восстановление</li>
+        <li>Низкая активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Повышенная калорийность для восстановления организма после длительного недоедания. Не диета — поддержка тела.</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Яичница с тостом</li><li>Обед: мясо, крупа, овощи</li><li>Поздний перекус</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="energy-restore">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">09</span>
+        <span class="program-card__tag">Голод и сытость</span>
+    </div>
+    <h2 class="program-card__title">Интуитивное питание: первые шаги</h2>
+    <ul class="program-card__meta">
+        <li><strong>Гибкий рацион</strong></li>
+        <li>Осознанность</li>
+        <li>Умеренная активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Сохраняем расписание, но добавляем вопросы: «Я голоден(а)?» / «Я наелся(ась)?». Без жёстких граммовок.</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Завтрак по аппетиту</li><li>Обед: суп + основное</li><li>Перекус при голоде</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="intuitive-steps">Смотреть меню</button>
+</article>
+<article class="program-card">
+    <div class="program-card__head">
+        <span class="program-card__num">10</span>
+        <span class="program-card__tag">Ремиссия</span>
+    </div>
+    <h2 class="program-card__title">Гибкое питание в ремиссии</h2>
+    <ul class="program-card__meta">
+        <li><strong>≈ 2000–2200 ккал</strong></li>
+        <li>Поддержание</li>
+        <li>Любая активность</li>
+        <li>7 дней</li>
+    </ul>
+    <p class="program-card__desc">Для этапа, когда режим уже устоялся: больше гибкости, еда вне дома, социальные ситуации без страха.</p>
+    <div class="program-card__sample">
+        <p class="program-card__sample-title">Пример блюд:</p>
+        <ul class="program-card__meals"><li>Завтрак в кафе</li><li>Обед в столовой или дома</li><li>Ужин с друзьями</li></ul>
+    </div>
+    <button type="button" class="program-card__btn" data-program-id="flexible-maintenance">Смотреть меню</button>
+</article>
+                </div>
+                <p class="programs-note">
+                    Программы носят рекомендательный характер и не заменяют работу с психологом или врачом по РПП.
+                    Перед началом программы проконсультируйтесь с врачом или диетологом.
+                </p>
+            </div>
+        </section>
+
+    <div id="program-overlay" class="program-overlay" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="program-overlay-title">
+        <div class="program-overlay__backdrop"></div>
+        <div class="program-overlay__panel">
+            <button type="button" class="program-overlay__close" id="program-overlay-close" aria-label="Закрыть">&times;</button>
+            <header class="program-overlay__header">
+                <h2 id="program-overlay-title" class="program-overlay__title"></h2>
+                <div id="program-overlay-meta" class="program-overlay__meta"></div>
+            </header>
+            <div id="program-overlay-body" class="program-overlay__body"></div>
+        </div>
+    </div>
+
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/programs-data.js' %}"></script>
+<script src="{% static 'js/programs.js' %}"></script>
+{% endblock %}

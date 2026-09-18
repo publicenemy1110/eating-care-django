@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}РПП терапия | Eating Care Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20260612g">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    {% block extra_head %}{% endblock %}
+</head>
+<body{% block body_attrs %}{% endblock %}>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="logo">
+                    <a href="{% url 'pages:index' %}" class="logo__link">
+                        <img src="{% static 'images/logo.png' %}" alt="Логотип" class="logo__img">
+                    </a>
+                </div>
+
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li><a href="{% url 'pages:rpp' %}" class="nav__link{% if active_page == 'rpp' %} active{% endif %}">Про РПП</a></li>
+                        <li><a href="{% url 'pages:tests' %}" class="nav__link{% if active_page == 'tests' %} active{% endif %}">Тесты на РПП</a></li>
+                        <li><a href="{% url 'pages:parents' %}" class="nav__link{% if active_page == 'parents' %} active{% endif %}">Для родителей</a></li>
+                        <li><a href="{% url 'pages:programs' %}" class="nav__link{% if active_page == 'programs' %} active{% endif %}">Программы питания</a></li>
+                        <li><a href="{% url 'pages:about' %}" class="nav__link{% if active_page == 'about' %} active{% endif %}">О нас</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header__auth">
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'accounts:profile' %}" class="header__auth-link{% if active_page == 'profile' %} active{% endif %}">Профиль</a>
+                        <form method="post" action="{% url 'accounts:logout' %}" class="header__auth-form">
+                            {% csrf_token %}
+                            <button type="submit" class="header__auth-link header__auth-link--btn">Выйти</button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'accounts:login' %}" class="header__auth-link">Войти</a>
+                        <a href="{% url 'accounts:register' %}" class="header__auth-link">Регистрация</a>
+                    {% endif %}
+                </div>
+
+                <button class="burger" aria-label="Меню">
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                    <span class="burger__line"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu">
+            <div class="mobile-menu__inner">
+                <ul class="mobile-menu__list">
+                    <li><a href="{% url 'pages:rpp' %}" class="mobile-menu__link{% if active_page == 'rpp' %} active{% endif %}">Про РПП</a></li>
+                    <li><a href="{% url 'pages:tests' %}" class="mobile-menu__link{% if active_page == 'tests' %} active{% endif %}">Тесты на РПП</a></li>
+                    <li><a href="{% url 'pages:parents' %}" class="mobile-menu__link{% if active_page == 'parents' %} active{% endif %}">Для родителей</a></li>
+                    <li><a href="{% url 'pages:programs' %}" class="mobile-menu__link{% if active_page == 'programs' %} active{% endif %}">Программы питания</a></li>
+                    <li><a href="{% url 'pages:about' %}" class="mobile-menu__link{% if active_page == 'about' %} active{% endif %}">О нас</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'accounts:profile' %}" class="mobile-menu__link{% if active_page == 'profile' %} active{% endif %}">Профиль</a></li>
+                        <li>
+                            <form method="post" action="{% url 'accounts:logout' %}" class="mobile-menu__logout-form">
+                                {% csrf_token %}
+                                <button type="submit" class="mobile-menu__link mobile-menu__link--btn">Выйти</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'accounts:login' %}" class="mobile-menu__link">Войти</a></li>
+                        <li><a href="{% url 'accounts:register' %}" class="mobile-menu__link">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <a href="{% url 'pages:index' %}" class="footer__logo-link">
+                    <img src="{% static 'images/logo.png' %}" alt="Eating Care Platform" class="footer__logo">
+                </a>
+                <span class="footer__name">Eating Care Platform</span>
+            </div>
+            <div class="footer__right">
+                <div class="footer__social">
+                    <a href="#" class="footer__social-link" aria-label="Telegram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="ВКонтакте">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.12-5.339-3.202-2.17-3.04-2.764-5.32-2.764-5.78 0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.863 2.49 2.303 4.675 2.896 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.151-3.574 2.151-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="footer__social-link" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+                        </svg>
+                    </a>
+                </div>
+                <p class="footer__copy">©eatingcaretplatform 2026</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

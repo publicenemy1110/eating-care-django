@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Вход | Eating Care Platform{% endblock %}
+{% block body_attrs %} class="page-auth"{% endblock %}
+
+{% block content %}
+<main class="auth-page">
+    <section class="auth-hero">
+        <div class="container auth-hero__container">
+            <p class="auth-hero__label">Eating Care Platform</p>
+            <h1 class="auth-hero__title">Вход в аккаунт</h1>
+            <p class="auth-hero__lead">Войдите, чтобы управлять профилем и получить доступ к персональным материалам.</p>
+
+            <form method="post" class="auth-form">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="auth-form__error auth-form__error--global">
+                        {{ form.non_field_errors.0 }}
+                    </div>
+                {% endif %}
+
+                <div class="auth-form__field{% if form.username.errors %} auth-form__field--error{% endif %}">
+                    <label class="auth-form__label" for="{{ form.username.id_for_label }}">Имя пользователя</label>
+                    <input
+                        type="text"
+                        name="username"
+                        id="{{ form.username.id_for_label }}"
+                        class="auth-form__input"
+                        placeholder="Логин"
+                        value="{{ form.username.value|default:'' }}"
+                        autofocus
+                        required
+                    >
+                    {% if form.username.errors %}
+                        <span class="auth-form__error">{{ form.username.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="auth-form__field{% if form.password.errors %} auth-form__field--error{% endif %}">
+                    <label class="auth-form__label" for="{{ form.password.id_for_label }}">Пароль</label>
+                    <input
+                        type="password"
+                        name="password"
+                        id="{{ form.password.id_for_label }}"
+                        class="auth-form__input"
+                        placeholder="••••••••"
+                        required
+                    >
+                    {% if form.password.errors %}
+                        <span class="auth-form__error">{{ form.password.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <button type="submit" class="auth-form__submit">Войти</button>
+            </form>
+
+            <p class="auth-hero__footer">
+                Нет аккаунта? <a href="{% url 'accounts:register' %}" class="auth-hero__link">Зарегистрироваться</a>
+            </p>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Расстройства пищевого поведения | Eating Care Platform{% endblock %}
+{% block body_attrs %} class="page-rpp"{% endblock %}
+
+{% block content %}
+<main class="rpp-page">
+        <section class="rpp-intro">
+            <div class="container rpp-intro__container">
+                <div class="rpp-intro__grid">
+                    <div class="rpp-intro__content">
+                        <h1 class="rpp-intro__title">Расстройства пищевого поведения</h1>
+                        <p class="rpp-intro__text">
+                            Расстройства пищевого поведения — расстройства, связанные с нарушением приёма пищи
+                            и имеющие серьёзные последствия для организма. РПП — одно из самых опасных
+                            заболеваний среди психических расстройств по уровню смертности.
+                        </p>
+                        <p class="rpp-intro__text">
+                            Основные признаки расстройств приёма пищи: чрезмерные опасения увеличения веса;
+                            значительные усилия по контролю за весом (строгая диета, вызывание рвоты,
+                            приём слабительных, избыточные физические упражнения); отрицание субъективной
+                            значимости проблемы веса и приёма пищи.
+                        </p>
+                    </div>
+                    <div class="rpp-intro__image">
+                        <img src="{% static 'images/rpp-intro.png' %}" alt="Информация о расстройствах пищевого поведения">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rpp-types">
+            <div class="container rpp-types__container">
+                <h2 class="rpp-section__title">Виды РПП</h2>
+                <p class="rpp-section__lead">Ниже — основные формы расстройств пищевого поведения и их характерные особенности.</p>
+
+                <div class="rpp-grid">
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">1</span>
+                        <h3 class="rpp-grid__heading">Нервная анорексия</h3>
+                        <p class="rpp-grid__text">
+                            Расстройство, характеризующееся преднамеренной потерей массы тела, вызванной
+                            и поддерживаемой пациентом. Чаще встречается у девочек подросткового возраста
+                            и молодых женщин, но возможно и у мужчин, детей и женщин старшего возраста.
+                            Ассоциируется с боязнью ожирения и навязчивой идеей низкого предела массы тела.
+                            Симптомы: ограничение диеты, чрезмерная нагрузка, рвотные, слабительные и мочегонные средства.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">2</span>
+                        <h3 class="rpp-grid__heading">Нервная булимия</h3>
+                        <p class="rpp-grid__text">
+                            Расстройство, при котором периодически возникают неконтролируемые приступы
+                            переедания, сопровождаемые компенсаторным поведением: вызыванием рвоты,
+                            приёмом слабительных, диуретиков или чрезмерными физическими нагрузками.
+                            Масса тела может оставаться в норме, поэтому булимию сложнее заметить со стороны.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">3</span>
+                        <h3 class="rpp-grid__heading">Компульсивное переедание</h3>
+                        <p class="rpp-grid__text">
+                            Регулярные эпизоды потребления большого количества пищи за короткий период
+                            с ощущением потери контроля. При этом компенсаторное поведение (рвота, голодание)
+                            отсутствует. Часто сопровождается чувством стыда, вины и набором веса.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">4</span>
+                        <h3 class="rpp-grid__heading">Ограничительное РПП</h3>
+                        <p class="rpp-grid__text">
+                            Избирательность в еде, отказ от целых групп продуктов, страх новой или
+                            «небезопасной» пищи. Не всегда связано с боязнью набора веса — иногда
+                            причина в сенсорной чувствительности, тревоге или негативном опыте с едой.
+                            Может приводить к дефициту питательных веществ и снижению веса.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">5</span>
+                        <h3 class="rpp-grid__heading">Орторексия</h3>
+                        <p class="rpp-grid__text">
+                            Навязчивое стремление к «правильному», «чистому» питанию, которое постепенно
+                            ограничивает рацион и социальную жизнь. Человек может отказываться от встреч,
+                            если еда не соответствует его правилам. При орторексии страдает не только тело,
+                            но и качество отношений с близкими.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">6</span>
+                        <h3 class="rpp-grid__heading">РПП с перееданием</h3>
+                        <p class="rpp-grid__text">
+                            Сочетание эпизодов переедания с другими симптомами РПП: жёсткими ограничениями,
+                            компульсивными проверками веса, избеганием еды в обществе. Важно отличать
+                            разовые переедания от устойчивого паттерна, требующего профессиональной помощи.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="rpp-signs">
+            <div class="container rpp-signs__container">
+                <div class="rpp-signs__header">
+                    <h2 class="rpp-signs__title">Как распознать РПП у близкого?</h2>
+                    <p class="rpp-signs__subtitle">
+                        Ниже представлены специфические признаки, по которым можно определить развитие РПП у человека:
+                    </p>
+                </div>
+
+                <div class="rpp-grid rpp-grid--signs">
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">1</span>
+                        <p class="rpp-grid__text">
+                            Регулярные разговоры о похудении, чтении тематических форумов и литературы.
+                            Интерес к сбросу веса постепенно начинает затмевать остальные увлечения.
+                            Нередко страдающий РПП обесценивает свои успехи в учёбе, работе, творчестве:
+                            «Кому какое дело, если я такой жирный».
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">2</span>
+                        <p class="rpp-grid__text">
+                            Недовольство своей фигурой, резкое отрицание своей худобы. Никто не способен
+                            убедить человека в том, что он хорошо выглядит. Напротив, разговоры на эту тему
+                            вызывают раздражение, злость и приводят к конфликтам.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">3</span>
+                        <p class="rpp-grid__text">
+                            Отказ от калорийных продуктов, постоянный подсчёт калорий, радикальные диеты.
+                            Человек теряет интерес к встречам с близкими, друзьями, особенно если они связаны
+                            с совместной трапезой. Близкий больше не рад, когда ему готовят любимое блюдо.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">4</span>
+                        <p class="rpp-grid__text">
+                            Вызывание рвоты даже при минимальном количестве съеденной пищи и/или приём
+                            слабительных, мочегонных, препаратов для похудения. Скрывание компенсаторного
+                            (вызывание рвоты, приём препаратов) поведения.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">5</span>
+                        <p class="rpp-grid__text">
+                            Изменение в поведении — склонность к уединению, отказ от привычного времяпровождения.
+                            Постепенно утрачиваются коммуникативные навыки. Вернуться к прежним контактам
+                            кажется всё более трудной задачей.
+                        </p>
+                    </article>
+
+                    <article class="rpp-grid__item">
+                        <span class="rpp-grid__num" aria-hidden="true">6</span>
+                        <p class="rpp-grid__text">
+                            Отвращение к еде. Может выражаться в морализаторстве, рассказе о вреде еды.
+                            Некогда любимые блюда вызывают не радость, а гнев. Разговоры о еде вызывают раздражение.
+                        </p>
+                    </article>
+                </div>
+
+                <section class="rpp-bmi" aria-labelledby="rpp-bmi-title">
+                    <div class="rpp-bmi__box">
+                        <div class="rpp-bmi__content">
+                            <h2 class="rpp-bmi__title" id="rpp-bmi-title">Индекс массы тела (ИМТ)</h2>
+                            <p class="rpp-bmi__intro">
+                                Одним из показателей оценки тяжести состояния является индекс массы тела (ИМТ) —
+                                соотношение массы тела и роста. ИМТ рассчитывается по формуле:
+                            </p>
+                            <p class="rpp-bmi__formula" aria-label="ИМТ равно масса делить на рост в метрах в квадрате">
+                                <span class="rpp-bmi__formula-letter">I</span> = <span class="rpp-bmi__formula-letter">m</span> / <span class="rpp-bmi__formula-letter">h</span><sup>2</sup>
+                            </p>
+                            <form class="rpp-bmi__form" id="bmi-form" novalidate>
+                                <div class="rpp-bmi__fields">
+                                    <label class="rpp-bmi__field">
+                                        <span class="rpp-bmi__label">Масса тела (кг)</span>
+                                        <input type="number" name="weight" id="bmi-weight" min="20" max="300" step="0.1" placeholder="Например, 55" required>
+                                    </label>
+                                    <label class="rpp-bmi__field">
+                                        <span class="rpp-bmi__label">Рост (см)</span>
+                                        <input type="number" name="height" id="bmi-height" min="100" max="250" step="1" placeholder="Например, 165" required>
+                                    </label>
+                                </div>
+                                <button type="submit" class="rpp-bmi__btn">Рассчитать ИМТ</button>
+                            </form>
+                            <div class="rpp-bmi__result" id="bmi-result" hidden>
+                                <p class="rpp-bmi__result-value">
+                                    Ваш ИМТ: <strong id="bmi-value">—</strong>
+                                </p>
+                                <p class="rpp-bmi__result-category" id="bmi-category"></p>
+                            </div>
+                        </div>
+                        <div class="rpp-bmi__icon" aria-hidden="true">
+                            <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                <circle cx="60" cy="28" r="18" stroke="#B5CFA1" stroke-width="3"/>
+                                <path d="M30 95c0-18 13-32 30-32s30 14 30 32" stroke="#7DA28C" stroke-width="3" stroke-linecap="round"/>
+                                <rect x="48" y="52" width="24" height="32" rx="6" stroke="#E9967A" stroke-width="2" fill="rgba(233,150,122,0.12)"/>
+                            </svg>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="rpp-disclaimer">
+                    <p class="rpp-disclaimer__text">
+                        Помните: определить точный диагноз и назначить лечение может только квалифицированный специалист.
+                        Если вы заметили у себя или близкого перечисленные признаки — пройдите тест или обратитесь за консультацией.
+                    </p>
+                    <a href="{% url 'pages:tests' %}" class="rpp-disclaimer__btn">Пройти тест на РПП</a>
+                </aside>
+            </div>
+        </section>
+    </main>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/rpp.js' %}"></script>
+{% endblock %}

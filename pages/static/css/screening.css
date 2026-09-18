@@ -1,0 +1,319 @@
+/* Стили опросников (подключается только на страницах тестов) */
+
+.page-screening {
+    background-color: #fff;
+}
+
+.screening {
+    padding: 140px 0 100px;
+    min-height: 70vh;
+}
+
+.screening__container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.screening__back {
+    display: inline-block;
+    margin-bottom: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #5a5a66;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.screening__back:hover {
+    color: #3D3D4E;
+    text-decoration: underline;
+}
+
+.screening__back--btn {
+    margin-bottom: 0;
+    padding: 14px 24px;
+    border: 2px solid #B5CFA1;
+    border-radius: 8px;
+    color: #3D3D4E;
+    text-decoration: none;
+}
+
+.screening__back--btn:hover {
+    background: rgba(181, 207, 161, 0.2);
+    text-decoration: none;
+}
+
+.screening__title {
+    font-family: 'Anonymous Pro', monospace;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    color: #3D3D4E;
+    margin: 0 0 12px;
+    line-height: 1.2;
+}
+
+.screening__lead,
+.screening__instructions {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: #4C4C47;
+    margin: 0 0 12px;
+}
+
+.screening__disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #5a5a66;
+    padding: 14px 18px;
+    background: #f5f7f4;
+    border-radius: 8px;
+    border-left: 4px solid #B5CFA1;
+    margin: 0 0 32px;
+}
+
+.screening__disclaimer--emphasis {
+    margin-top: 32px;
+    margin-bottom: 0;
+}
+
+.screening__error {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #b42318;
+    background: #fef3f2;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.screening-form__list {
+    list-style: none;
+    margin: 0 0 40px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.screening-form__item {
+    padding: 24px;
+    background: #fafbf9;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    list-style: none;
+}
+
+.screening-form__question {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #3D3D4E;
+    margin: 0 0 18px;
+}
+
+.screening-form__num {
+    font-weight: 600;
+    color: #7DA28C;
+    margin-right: 4px;
+}
+
+.screening-form__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.screening-form__text {
+    line-height: 1.35;
+    pointer-events: none;
+}
+
+.screening-form__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.screening-form__options--yn {
+    gap: 12px;
+}
+
+.screening-form__options--stack {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8px;
+    width: 100%;
+}
+
+.screening-form__options--grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+}
+
+.screening-form__pill,
+.screening-form__choice {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #3D3D4E;
+    margin: 0;
+    user-select: none;
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 8px;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screening-form__pill {
+    min-width: 110px;
+    padding: 12px 28px;
+}
+
+.screening-form__choice {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 16px;
+    justify-content: flex-start;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.screening-form__choice--compact {
+    min-height: 44px;
+    padding: 10px 8px;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+}
+
+.screening-form__pill.is-selected,
+.screening-form__choice.is-selected,
+.screening-form__pill:has(.screening-form__input:checked),
+.screening-form__choice:has(.screening-form__input:checked) {
+    border-color: #B5CFA1;
+    background: rgba(181, 207, 161, 0.35);
+    box-shadow: 0 0 0 2px rgba(181, 207, 161, 0.25);
+}
+
+.screening-form__actions {
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+    margin-top: 8px;
+}
+
+.screening-form__submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    padding: 14px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #B5CFA1;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.screening-form__submit:hover {
+    background: #a3c090;
+}
+
+.screening-form__submit:active {
+    transform: translateY(1px);
+}
+
+.screening-form__submit--secondary {
+    background: #fff;
+    border: 2px solid #B5CFA1;
+}
+
+.screening-result {
+    padding: 28px;
+    background: #fafbf9;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 24px;
+}
+
+.screening-result__score {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #3D3D4E;
+    margin: 0 0 16px;
+}
+
+.screening-result__summary {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4C4C47;
+    margin: 0;
+}
+
+.screening-result__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .screening-form__options--eat26_likert {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 900px) {
+    .screening-form__options--eat26_likert {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .screening-form__choice--compact {
+        font-size: 12px;
+        padding: 10px 6px;
+    }
+}
+
+@media (max-width: 600px) {
+    .screening {
+        padding: 120px 0 60px;
+    }
+
+    .screening__container {
+        padding: 0 16px;
+    }
+
+    .screening-form__item {
+        padding: 18px;
+    }
+
+    .screening-form__pill {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .screening-form__submit {
+        width: 100%;
+    }
+}

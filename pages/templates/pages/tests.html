@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Тесты на РПП | РПП терапия{% endblock %}
+{% block body_attrs %} class="page-tests"{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/tests.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<main class="tests">
+        <div class="container tests__container">
+            <h1 class="visually-hidden">Тесты на РПП</h1>
+
+            <div class="tests-toolbar">
+                <div class="tests-toolbar__info">
+                    <span class="tests-toolbar__caption">Категория</span>
+                    <p class="tests-toolbar__label" id="tests-category-label">{{ test_categories.0.label }}</p>
+                </div>
+                <div class="tests-filter">
+                    <button type="button" title="Фильтр по категории" class="filter" id="tests-filter-btn" aria-expanded="false" aria-haspopup="listbox" aria-controls="tests-filter-menu">
+                        <svg viewBox="0 0 512 512" height="1em" aria-hidden="true">
+                            <path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"></path>
+                        </svg>
+                    </button>
+                    <div class="tests-filter__menu" id="tests-filter-menu" role="listbox" aria-label="Категории тестов" hidden>
+                        {% for category in test_categories %}
+                        <button type="button" class="tests-filter__option{% if forloop.first %} is-active{% endif %}" role="option" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-tab="{{ category.id }}" data-label="{{ category.label }}">{{ category.label }}</button>
+                        {% endfor %}
+                        <button type="button" class="tests-filter__option" role="option" aria-selected="false" data-tab="custom" data-label="Собственные тесты">Собственные тесты</button>
+                    </div>
+                </div>
+            </div>
+
+            {% for category in test_categories %}
+            <div class="tests-panel{% if forloop.first %} is-active{% endif %}" id="panel-{{ category.id }}" role="tabpanel" data-panel="{{ category.id }}"{% if not forloop.first %} hidden{% endif %}>
+                <ul class="tests-list">
+                    {% for item in category.items %}
+                    <li class="tests-list__item">
+                        <span class="tests-list__name">{{ item.name }}</span>
+                        <a href="{% url 'pages:screening_take' slug=item.slug %}" class="tests-list__btn">Открыть</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+            <div class="tests-panel" id="panel-custom" role="tabpanel" data-panel="custom" hidden>
+                {% if messages %}
+                <div class="tests-messages">
+                    {% for message in messages %}
+                    <p class="tests-messages__item tests-messages__item--{{ message.tags }}">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if can_create_custom_tests %}
+                <div class="tests-custom-actions">
+                    <a href="{% url 'pages:custom_test_create' %}" class="tests-custom-actions__btn">Создать тест</a>
+                </div>
+                {% endif %}
+
+                {% if my_custom_tests %}
+                <div class="tests-custom-section">
+                    <h2 class="tests-custom-section__title">Мои тесты</h2>
+                    <ul class="tests-list">
+                        {% for test in my_custom_tests %}
+                        <li class="tests-list__item">
+                            <span class="tests-list__name">
+                                {{ test.title }}
+                                {% if not test.is_published %}
+                                    <span class="tests-list__badge">Черновик</span>
+                                {% endif %}
+                            </span>
+                            <div class="tests-list__actions">
+                                <a href="{% url 'pages:custom_test_edit' slug=test.slug %}" class="tests-list__btn tests-list__btn--secondary">Изменить</a>
+                                {% if test.is_published %}
+                                <a href="{% url 'pages:custom_test_take' slug=test.slug %}" class="tests-list__btn">Открыть</a>
+                                {% else %}
+                                <span class="tests-list__btn tests-list__btn--disabled">Не опубликован</span>
+                                {% endif %}
+                                <form method="post" action="{% url 'pages:custom_test_delete' slug=test.slug %}" class="tests-list__delete-form" onsubmit="return confirm('Удалить тест «{{ test.title|escapejs }}»?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="tests-list__btn tests-list__btn--danger">Удалить</button>
+                                </form>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+
+                {% if custom_tests %}
+                <div class="tests-custom-section">
+                    <h2 class="tests-custom-section__title">Опубликованные опросники</h2>
+                    <ul class="tests-list">
+                        {% for test in custom_tests %}
+                        <li class="tests-list__item">
+                            <span class="tests-list__name">
+                                {{ test.title }}
+                                <span class="tests-list__meta">— {{ test.author.get_full_name|default:test.author.username }}</span>
+                            </span>
+                            <a href="{% url 'pages:custom_test_take' slug=test.slug %}" class="tests-list__btn">Открыть</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% elif not my_custom_tests %}
+                <div class="tests-empty">
+                    <p class="tests-empty__text">
+                        {% if can_create_custom_tests %}
+                            Здесь появятся ваши собственные опросники и методики. Нажмите «Создать тест», чтобы добавить первый.
+                        {% else %}
+                            Здесь появятся опросники, созданные одобренными психологами платформы.
+                        {% endif %}
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+{% endblock %}

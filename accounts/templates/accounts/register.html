@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация | Eating Care Platform{% endblock %}
+{% block body_attrs %} class="page-auth"{% endblock %}
+
+{% block content %}
+<main class="auth-page">
+    <section class="auth-hero">
+        <div class="container auth-hero__container">
+            <p class="auth-hero__label">Eating Care Platform</p>
+            <h1 class="auth-hero__title">Регистрация</h1>
+            <p class="auth-hero__lead">Создайте аккаунт, чтобы сохранять результаты тестов и управлять профилем.</p>
+
+            <form method="post" class="auth-form" novalidate>
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="auth-form__error auth-form__error--global">
+                        {{ form.non_field_errors.0 }}
+                    </div>
+                {% endif %}
+
+                {% for field in form %}
+                <div class="auth-form__field{% if field.errors %} auth-form__field--error{% endif %}">
+                    <label class="auth-form__label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}
+                        <span class="auth-form__hint">{{ field.help_text }}</span>
+                    {% endif %}
+                    {% if field.errors %}
+                        <span class="auth-form__error">{{ field.errors.0 }}</span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="auth-form__submit">Зарегистрироваться</button>
+            </form>
+
+            <p class="auth-hero__footer">
+                Уже есть аккаунт? <a href="{% url 'accounts:login' %}" class="auth-hero__link">Войти</a>
+            </p>
+        </div>
+    </section>
+</main>
+{% endblock %}

@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Методическое указание для родителей | РПП терапия{% endblock %}
+{% block body_attrs %} class="page-parents"{% endblock %}
+
+{% block content %}
+<main class="parents">
+        <section class="parents-intro">
+            <div class="container parents-intro__container">
+                <h1 class="parents-intro__title">Методическое указание для родителей</h1>
+
+                <div class="parents-intro__grid">
+                    <div class="parents-intro__image">
+                        <img src="{% static 'images/parents-photo.png' %}" alt="Поддержка близкого человека">
+                    </div>
+
+                    <div class="parents-intro__content">
+                        <p class="parents-intro__text">
+                            Простая инструкция для тех, кто хочет быть рядом в трудный момент.
+                        </p>
+                        <h2 class="parents-intro__subtitle">Содержание указания:</h2>
+                        <ul class="parents-intro__list">
+                            <li><a href="#understand">Цели и план действий</a></li>
+                            <li><a href="#signs">Рекомендации родителям</a></li>
+                            <li><a href="#formats">Форматы участия</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="parents-benefits">
+            <div class="container parents-benefits__container">
+                <h2 class="parents-benefits__title">Мы сделали указание, чтобы помочь вам:</h2>
+
+                <div class="parents-benefits__grid">
+                    <article class="parents-benefits__item">
+                        <span class="parents-benefits__icon" aria-hidden="true"></span>
+                        <p class="parents-benefits__text">
+                            Поддержать своего близкого человека на его пути выздоровления
+                        </p>
+                    </article>
+
+                    <article class="parents-benefits__item">
+                        <span class="parents-benefits__icon" aria-hidden="true"></span>
+                        <p class="parents-benefits__text">
+                            Понять как помочь в трудную минуту
+                        </p>
+                    </article>
+
+                    <article class="parents-benefits__item">
+                        <span class="parents-benefits__icon" aria-hidden="true"></span>
+                        <p class="parents-benefits__text">
+                            Распознать симптомы РПП и отслеживать динамику болезни
+                        </p>
+                    </article>
+
+                    <article class="parents-benefits__item">
+                        <span class="parents-benefits__icon" aria-hidden="true"></span>
+                        <p class="parents-benefits__text">
+                            Укрепить взаимоотношения чтобы добиться результатов вместе
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="parents-guide parents-guide--light" id="understand">
+            <div class="container parents-guide__container">
+                <h2 class="parents-guide__title">Что важно понимать о РПП</h2>
+                <p class="parents-guide__lead">
+                    Нарушения пищевого поведения у детей могут быть связаны со стрессом,
+                    семейными отношениями, наследственностью или особенностями восприятия тела.
+                </p>
+                <ul class="parents-guide__list">
+                    <li>
+                        <strong>Основные формы.</strong>
+                        Анорексия — резкое снижение веса и отказ от еды. Булимия — переедание
+                        с компенсацией (рвота, слабительные). Компульсивное переедание — потеря контроля над едой.
+                    </li>
+                    <li>
+                        <strong>Ранние признаки.</strong>
+                        Плохое чувство голода, длительное поглощение пищи, трудности с твёрдой едой.
+                        У подростков — усталость, тревожность, проблемы со сном.
+                    </li>
+                    <li>
+                        <strong>Почему это серьёзно.</strong>
+                        РПП влияет на кости, зубы, сердце, иммунитет и психику.
+                        Нужны психотерапия, медицинская помощь и поддержка семьи.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="parents-guide parents-guide--accent" id="signs">
+            <div class="container parents-guide__container">
+                <h2 class="parents-guide__title">Как распознать РПП у подростка</h2>
+                <p class="parents-guide__lead">
+                    Полезно спокойно обсуждать здоровое питание дома. Если замечаете устойчивые изменения — обратите внимание:
+                </p>
+                <ul class="parents-guide__list">
+                    <li>
+                        <strong>Анорексия.</strong>
+                        Отказы от еды, зацикленность на весе, чрезмерные тренировки.
+                        Вес может не расти, несмотря на нормальный рацион.
+                    </li>
+                    <li>
+                        <strong>Булимия.</strong>
+                        Переедание с последующей рвотой, слабительными или изнуряющими нагрузками.
+                        Такое поведение часто скрывают.
+                    </li>
+                    <li>
+                        <strong>Компульсивное переедание.</strong>
+                        Большие порции за короткое время без ощущения контроля.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="parents-guide parents-guide--light" id="weight">
+            <div class="container parents-guide__container">
+                <div class="parents-highlight">
+                    <div class="parents-highlight__content">
+                        <h2 class="parents-highlight__title">Рост, вес и возраст</h2>
+                        <p class="parents-highlight__text">
+                            Три показателя, за которыми важно следить с рождения.
+                            В России для оценки используется Российская Педиатрическая Шкала (РПШ).
+                        </p>
+                        <ul class="parents-highlight__list">
+                            <li>
+                                <strong>Динамика важнее одного замера.</strong>
+                                Смотрите на тенденцию, а не на цифру «вчера–сегодня».
+                            </li>
+                            <li>
+                                <strong>У всех разная норма.</strong>
+                                Генетика и активность влияют на вес — сравнивать с «идеалом из интернета» бессмысленно.
+                            </li>
+                            <li>
+                                <strong>Резкие изменения — к врачу.</strong>
+                                Необычное снижение или повышение веса — повод для обследования у специалиста.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="parents-highlight__icon" aria-hidden="true">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                            <rect x="20" y="55" width="60" height="30" rx="8" stroke="#B5CFA1" stroke-width="2.5" fill="rgba(181,207,161,0.15)"/>
+                            <path d="M30 55V40c0-11 9-20 20-20s20 9 20 20v15" stroke="#E9967A" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="50" cy="68" r="6" fill="#7DA28C" opacity="0.6"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="parents-guide parents-guide--accent" id="help">
+            <div class="container parents-guide__container">
+                <h2 class="parents-guide__title">Как помочь ребёнку</h2>
+                <p class="parents-guide__lead">
+                    Не паникуйте — но и не оставляйте проблему без внимания. С чего обычно начинают родители:
+                </p>
+                <ol class="parents-guide__steps">
+                    <li><strong>Обратитесь к врачу</strong> — педиатру, психотерапевту или психиатру с опытом работы с РПП.</li>
+                    <li><strong>Не критикуйте</strong> — не ругайте за то, что ест или не ест. Покажите, что вы рядом.</li>
+                    <li><strong>Изучите тему</strong> — базовые знания о РПП помогут понять, с чем вы столкнулись.</li>
+                    <li><strong>Создайте безопасное окружение</strong> — не давите мнением и не изолируйте ребёнка.</li>
+                    <li><strong>Найдите группу поддержки</strong> — онлайн или офлайн, чтобы не оставаться один на один с проблемой.</li>
+                    <li><strong>Будьте терпеливы</strong> — изменения занимают время, отмечайте маленькие шаги.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="parents-guide parents-guide--light parents-guide--last" id="formats">
+            <div class="container parents-guide__container">
+                <h2 class="parents-guide__title">Форматы участия и помощи</h2>
+                <p class="parents-guide__lead">
+                    Лечение РПП обычно включает несколько направлений — от семейной поддержки до работы со специалистами.
+                </p>
+                <ul class="parents-guide__list">
+                    <li>
+                        <strong>Когнитивно-поведенческая терапия</strong> — помогает заметить мысли,
+                        усиливающие страх еды или веса, и постепенно заменить их более здоровыми.
+                    </li>
+                    <li>
+                        <strong>Семейная терапия</strong> — разбирает, как устроено общение дома,
+                        и помогает создать безопасную атмосферу.
+                    </li>
+                    <li>
+                        <strong>Поддержка семьи и окружения</strong> — общение на темы еды без давления,
+                        помощь в быту, поддержка со стороны друзей и педагогов.
+                    </li>
+                </ul>
+
+                <aside class="parents-guide__cta">
+                    <p class="parents-guide__cta-text">
+                        Самостоятельные попытки «исправить» ситуацию могут усугубить её.
+                        Если что-то настораживает — обращайтесь за профессиональной помощью.
+                    </p>
+                    <div class="parents-guide__cta-actions">
+                        <a href="{% url 'pages:tests' %}" class="parents-guide__btn parents-guide__btn--primary">Пройти тест на РПП</a>
+                        <a href="{% url 'pages:rpp' %}" class="parents-guide__btn parents-guide__btn--secondary">Подробнее о РПП</a>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+{% endblock %}
